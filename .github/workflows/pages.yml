@@ -28,10 +28,20 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
 
+      - name: Validate loaders
+        run: |
+          sh -n install.sh
+          test_dir=$(mktemp -d)
+          printf '%s\n' '#!/bin/sh' 'printf "shell loader ok\\n"' > "$test_dir/install.sh"
+          WAGO_INSTALL_BASE_URL="file://$test_dir" sh index.html > "$test_dir/output"
+          grep -Fx 'shell loader ok' "$test_dir/output"
+          mkdir _site
+          cp index.html install.sh install.cmd _site/
+
       - name: Upload installer site
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
         with:
-          path: .
+          path: _site
 
       - name: Deploy installer site
         id: deployment

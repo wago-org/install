@@ -6,12 +6,16 @@ This repository publishes the small bootstrap scripts served from
 `Publish installers` workflow.
 
 ```sh
-curl -fsSL https://install.wago.sh/install.sh | sh
+curl -fsSL https://install.wago.sh | sh
 ```
 
 ```cmd
-curl.exe -fsSL https://install.wago.sh/install.cmd -o install.cmd && install.cmd
+curl -fsSL https://install.wago.sh | cmd
 ```
+
+The site root is a small shell/Command Prompt polyglot loader. The explicit
+`/install.sh` and `/install.cmd` URLs remain available for scripts that need
+them.
 
 Do not edit `install.sh` or `install.cmd` here; the next Wago `main` sync will
 replace them.
