@@ -31,6 +31,8 @@ jobs:
       - name: Validate loaders
         run: |
           sh -n install.sh
+          # PowerShell, not the runner shell, expands this expression.
+          # shellcheck disable=SC2016
           pwsh -NoLogo -NoProfile -Command '$null = [scriptblock]::Create((Get-Content -Raw install.ps1))'
           test_dir=$(mktemp -d)
           printf '%s\n' '#!/bin/sh' 'printf "shell loader ok\\n"' > "$test_dir/install.sh"
@@ -38,6 +40,8 @@ jobs:
           grep -Fx 'shell loader ok' "$test_dir/output"
           mkdir _site
           cp index.html install.sh install.cmd install.ps1 _site/
+          cp install.ps1 _site/win
+          cmp install.ps1 _site/win
 
       - name: Upload installer site
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3

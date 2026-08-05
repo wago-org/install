@@ -10,12 +10,13 @@ curl -fsSL https://install.wago.sh | sh
 ```
 
 ```powershell
-irm https://install.wago.sh/install.ps1 | iex
+curl.exe -fsSL https://install.wago.sh/win | powershell -c -
 ```
 
 The site root is a small shell/Command Prompt polyglot loader. The explicit
-`/install.sh`, `/install.cmd`, and `/install.ps1` URLs remain available for
-scripts that need them.
+`/win` serves the PowerShell loader used by the cross-shell Windows command.
+The explicit `/install.sh`, `/install.cmd`, and `/install.ps1` URLs remain
+available for scripts that need them.
 
 Do not edit the installer scripts here; the next Wago `main` sync will replace
 them.
