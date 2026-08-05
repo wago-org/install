@@ -31,12 +31,13 @@ jobs:
       - name: Validate loaders
         run: |
           sh -n install.sh
+          pwsh -NoLogo -NoProfile -Command '$null = [scriptblock]::Create((Get-Content -Raw install.ps1))'
           test_dir=$(mktemp -d)
           printf '%s\n' '#!/bin/sh' 'printf "shell loader ok\\n"' > "$test_dir/install.sh"
           WAGO_INSTALL_BASE_URL="file://$test_dir" sh index.html > "$test_dir/output"
           grep -Fx 'shell loader ok' "$test_dir/output"
           mkdir _site
-          cp index.html install.sh install.cmd _site/
+          cp index.html install.sh install.cmd install.ps1 _site/
 
       - name: Upload installer site
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3

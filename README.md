@@ -9,13 +9,13 @@ This repository publishes the small bootstrap scripts served from
 curl -fsSL https://install.wago.sh | sh
 ```
 
-```cmd
-curl -fsSL https://install.wago.sh | cmd /q
+```powershell
+irm https://install.wago.sh/install.ps1 | iex
 ```
 
 The site root is a small shell/Command Prompt polyglot loader. The explicit
-`/install.sh` and `/install.cmd` URLs remain available for scripts that need
-them.
+`/install.sh`, `/install.cmd`, and `/install.ps1` URLs remain available for
+scripts that need them.
 
-Do not edit `install.sh` or `install.cmd` here; the next Wago `main` sync will
-replace them.
+Do not edit the installer scripts here; the next Wago `main` sync will replace
+them.
