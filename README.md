@@ -10,7 +10,7 @@ curl -fsSL https://install.wago.sh | sh
 ```
 
 ```cmd
-curl -fsSL https://install.wago.sh | cmd
+curl -fsSL https://install.wago.sh | cmd /q
 ```
 
 The site root is a small shell/Command Prompt polyglot loader. The explicit
