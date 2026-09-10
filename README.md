@@ -13,15 +13,10 @@ curl -fsSL https://install.wago.sh/unix | sh
 irm https://install.wago.sh/ps | iex
 ```
 
-```cmd
-curl -fsSL https://install.wago.sh/cmd | cmd
-```
-
-The site root remains a shell/Command Prompt polyglot loader. The dedicated
-`/unix`, `/ps`, and `/cmd` entry points provide cleaner native shell output.
-The explicit `/install.sh`, `/install.cmd`, and `/install.ps1` URLs remain
-available for scripts that need them, and `/win` remains the cross-shell
-Windows fallback.
+The site root is a shell loader. The dedicated `/unix` and `/ps` entry points
+provide native shell output. The explicit `/install.sh` and `/install.ps1`
+URLs remain available for scripts that need them, and `/win` remains an alias
+for the PowerShell loader.
 
 Do not edit the installer scripts here; the next Wago `main` sync will replace
 them.
